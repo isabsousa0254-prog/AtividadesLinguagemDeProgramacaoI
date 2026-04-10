@@ -5,7 +5,6 @@ if quantidade_em_estoque < 0:
     print("Erro: A quantidade não pode ser um valor negativo. Por favor, tente novamente.")
 else:
     preco_unitario = float(input("Digite o preço unitário: "))
-
     print("\nRESUMO DO PRODUTO")
     print("Nome:", nome_do_produto)
     print("Quantidade:", quantidade_em_estoque)
