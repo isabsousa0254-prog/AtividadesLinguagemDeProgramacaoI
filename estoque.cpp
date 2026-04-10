@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
 int main() {
     string nome_do_produto;
     int quantidade_em_estoque;
