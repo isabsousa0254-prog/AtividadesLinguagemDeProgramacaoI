@@ -1,39 +1,68 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="gerenciador.cpp" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/gerenciador.cpp" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/gerenciador.cpp" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Produto {
+    string nome;
+    int quantidade;
+    float preco;
+};
+
+int main() {
+    vector<Produto> produtos;
+    int opcao;
+
+    while (true) {
+        cout << "\nMENU\n";
+        cout << "1. Adicionar novo produto\n";
+        cout << "2. Listar produtos em estoque\n";
+        cout << "3. Sair\n";
+        cout << "Escolha uma opcao: ";
+        cin >> opcao;
+
+        if (opcao == 1) {
+            Produto p;
+            cout << "Nome do produto: ";
+            cin >> p.nome;
+
+            cout << "Quantidade: ";
+            cin >> p.quantidade;
+            while (p.quantidade < 0) {
+                cout << "Quantidade nao pode ser negativa!\n";
+                cout << "Digite novamente: ";
+                cin >> p.quantidade;
+            }
+
+            cout << "Preco: ";
+            cin >> p.preco;
+
+            produtos.push_back(p);
+            cout << "Produto adicionado com sucesso!\n";
+
+        } else if (opcao == 2) {
+            if (produtos.empty()) {
+                cout << "Nenhum produto cadastrado.\n";
+            } else {
+                cout << "\nESTOQUE\n";
+                for (int i = 0; i < produtos.size(); i++) {
+                    cout << "Nome: " << produtos[i].nome
+                         << ", Quantidade: " << produtos[i].quantidade
+                         << ", Preco: R$" << produtos[i].preco << endl;
+                }
+            }
+
+        } else if (opcao == 3) {
+            cout << "Execução encerrada\n";
+            break;
+
+        } else {
+            cout << "Opcao invalida!\n";
+        }
+    }
+
+    return 0;
+}
+
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
