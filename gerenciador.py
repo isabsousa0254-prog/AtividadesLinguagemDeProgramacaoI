@@ -33,7 +33,6 @@ while True:
             print("\nESTOQUE")
             for p in produtos:
                 print(f"Nome: {p['nome']}, Quantidade: {p['quantidade']}, Preço: R$ {p['preco']:.2f}")
-
     elif opcao == 3:
         print("Execução encerrada.")
         break
